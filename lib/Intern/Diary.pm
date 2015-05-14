@@ -12,7 +12,8 @@ use Try::Tiny;
 use Intern::Diary::Error;
 use Intern::Diary::Context;
 use Intern::Diary::Config;
-use Intern::Diary::Logger qw(critf);
+#use Intern::Diary::Logger qw(critf);
+use Log::Minimal qw(critf);
 
 sub as_psgi {
     my $class = shift;

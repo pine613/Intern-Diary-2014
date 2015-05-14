@@ -2,6 +2,32 @@
 use strict;
 use warnings;
 use utf8;
+use 5.18.2;
+
+use lib 'lib';
+
+use Intern::Diary::CLI qw/input_text/;
+
+my $action = shift;
+
+if ($action eq 'add') {
+    my $body = input_text();
+
+    if (!$body) {
+        warn "Article text required!!\n";
+        exit 1;
+    }
+
+    say $body;
+}
+
+else {
+    warn "Arguments Error!!\n\n";
+    warn "  Usage: ./diary.pl [action] [argument...]\n\n";
+    exit 1;
+}
+
+#given ($ARGV[0])
 
 __END__
 

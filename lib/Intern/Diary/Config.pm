@@ -30,9 +30,9 @@ config local => {
     parent('default'),
     db => {
         intern_diary => {
-            user     => 'nobody',
-            password => 'nobody',
-            dsn      => "dbi:mysql:dbname=intern_diary_$ENV{USER};host=localhost",
+            user     => 'dev_master',
+            password => '',
+            dsn      => "dbi:mysql:dbname=intern_diary;host=localhost",
         },
     },
     db_timezone => 'UTC',
@@ -43,9 +43,9 @@ config test => {
 
     db => {
         intern_diary => {
-            user     => 'nobody',
-            password => 'nobody',
-            dsn      => "dbi:mysql:dbname=intern_diary_$ENV{USER}_test;host=localhost",
+            user     => 'dev_master',
+            password => '',
+            dsn      => "dbi:mysql:dbname=intern_diary_test;host=localhost",
         },
     },
     db_timezone => 'UTC',
