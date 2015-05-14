@@ -1,4 +1,5 @@
 #!/usr/bin/env perl
+
 use strict;
 use warnings;
 use utf8;
@@ -7,36 +8,72 @@ use 5.18.2;
 use lib 'lib';
 
 use Intern::Diary::CLI qw/input_text/;
+use Intern::Diary::Service::Entry;
+use Intern::Diary::DBI::Factory;
 
+
+sub run {
+    my ($action, @args) = @_;
+    my @actions = ('add', 'list', 'edit', 'delete');
+
+    if (grep { $_ eq $action } @actions) {
+        my $db = Intern::Diary::DBI::Factory->new();
+        &{\&{$action}}($db->dbh('local'), @args);
+    }
+
+    else {
+        error();
+    }
+}
 
 sub add {
-    my $body = input_text();
+    my ($dbh, $title) = @_;
 
-    if (!$body) {
-        warn "Article text required!!\n";
+    say $dbh;
+
+    if (!$title) {
+        warn "\nArticle title required!!\n";
+        warn "  Usage: ./diary.pl add [title]\n\n";
         exit 1;
     }
 
+    my $body = input_text();
+
+    if (!$body) {
+        warn "\nArticle text required!!\n";
+        exit 1;
+    }
+
+    say $title;
     say $body;
 }
 
-sub default {
-    warn "Arguments Error!!\n\n";
+sub list {
+
+
+}
+
+sub edit {
+    my $id = shift;
+
+    if (!$id) {
+        warn "\nArticle ID required!!\n\n";
+        warn "  Usage: ./diary.pl edit [ID]\n\n";
+        exit 1;
+    }
+
+}
+
+sub delete {
+}
+
+sub error {
+    warn "\nArguments Error!!\n\n";
     warn "  Usage: ./diary.pl [action] [argument...]\n\n";
     exit 1;
 }
 
-sub run {
-    my @actions = ('add', 'list');
-    my $action = shift;
-
-    # TODO: $action で分岐 WIP
-#    if (grep { $_ eq $action
-
-#        }
-}
-
-#given ($ARGV[0])
+run(@ARGV);
 
 __END__
 
