@@ -8,9 +8,8 @@ use lib 'lib';
 
 use Intern::Diary::CLI qw/input_text/;
 
-my $action = shift;
 
-if ($action eq 'add') {
+sub add {
     my $body = input_text();
 
     if (!$body) {
@@ -21,10 +20,20 @@ if ($action eq 'add') {
     say $body;
 }
 
-else {
+sub default {
     warn "Arguments Error!!\n\n";
     warn "  Usage: ./diary.pl [action] [argument...]\n\n";
     exit 1;
+}
+
+sub run {
+    my @actions = ('add', 'list');
+    my $action = shift;
+
+    # TODO: $action で分岐 WIP
+#    if (grep { $_ eq $action
+
+#        }
 }
 
 #given ($ARGV[0])

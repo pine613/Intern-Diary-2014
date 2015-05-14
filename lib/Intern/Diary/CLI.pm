@@ -16,10 +16,7 @@ sub input_text {
 
     system $editor => $filename;
 
-    my $text = do { local $/; <$fh> };
-    close $fh;
-
-    return $text;
+    return do { local $/; <$fh> };
 }
 
 1;
