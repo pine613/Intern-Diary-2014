@@ -39,6 +39,9 @@ requires 'Server::Starter';
 
 requires 'Devel::KYTProf';
 
+# ---- for CLI ----
+requires 'Text::ASCIITable';
+
 # ---- for test ----
 on test => sub {
     requires 'Test::More';

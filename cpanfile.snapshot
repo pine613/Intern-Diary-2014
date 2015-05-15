@@ -2630,6 +2630,14 @@ DISTRIBUTIONS
       Test::Builder::Tester 1.02
       Test::More 0
       perl 5.006
+  Text-ASCIITable-0.18
+    pathname: D/DU/DUMMY/Text-ASCIITable-0.18.tar.gz
+    provides:
+      Text::ASCIITable 0.18
+      Text::ASCIITable::Wrap 0.2
+    requirements:
+      Carp 0
+      perl v5.6.0
   Text-Diff-1.37
     pathname: D/DU/DUMMY/Text-Diff-1.37.tar.gz
     provides:
