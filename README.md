@@ -17,6 +17,11 @@ $ carton install
 
 ## CLI
 
+```
+$ export INTERN_DIARY_ENV=local
+$ carton exec perl ./diary.pl [action] [arguments ...]
+```
+
 ### $ diary.pl add [title]
 日記に記事を書きます。
 ### $ diary.pl list
