@@ -1,9 +1,36 @@
+## 起動に必要な条件
+
+ - MySQL
+    - Host: localhost
+    - User: dev\_master@localhost
+    - Password: 空欄
+    - Database: intern\_diary
+ - Perl 5.18.2
+ - Carton
+
+
 ## セットアップ
-以下のコマンドを実行。
+
 ```
-$ script/setup.sh
+$ carton install
 ```
 
+## CLI
+
+### $ diary.pl add [title]
+日記に記事を書きます。
+### $ diary.pl list
+日記に投稿された記事の一覧を表示します。
+### $ diary.pl show [entry ID]
+日記に投稿された記事の詳細を表示します。
+### $ diary.pl show [entry ID]
+日記に投稿された記事の詳細を表示します。
+### $ diary.pl edit [entry ID]
+指定したIDの記事を編集します。
+### $ diary.pl delete [entry ID]
+指定したIDの記事を削除します
+
+<!--
 ## サーバ起動
 以下のコマンドでサーバが起動できる。デフォルトではhttp://localhost:3000/ にアクセスすれば良い。
 ```
@@ -53,3 +80,4 @@ $c->redirect('/');
 ### $c->route
 - ルーティング結果が格納されたハッシュリファレンスを取得する
 - ルーティングは`Intern::Diary::Config::Route`で行われる
+-->
