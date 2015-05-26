@@ -5,6 +5,7 @@ use warnings;
 use utf8;
 use 5.18.2;
 
+use Encode;
 use Exporter 'import';
 use File::Temp qw/tempfile tempdir/;
 use IO::Handle;
@@ -21,7 +22,7 @@ sub edit_text {
     my ($fh, $filename) = tempfile();
 
     # 現在の内容を書き込む
-    print $fh $text if $text;
+    print $fh encode_utf8($text) if $text;
     $fh->flush;
     seek $fh, 0, 0;
 
