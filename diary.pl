@@ -5,6 +5,7 @@ use warnings;
 use utf8;
 use 5.18.2;
 
+use Encode;
 use Data::Dumper;
 use Text::ASCIITable;
 
@@ -18,6 +19,8 @@ use Intern::Diary::Service::Entry;
 sub run {
     my ($action, @args) = @_;
     my @actions = ('add', 'list', 'show', 'edit', 'delete');
+
+    $action //= 'error';
 
     if (grep { $_ eq $action } @actions) {
         my $db = Intern::Diary::DBI::Factory->new();
@@ -68,7 +71,7 @@ sub list {
         $table->addRow($entry->{id}, $entry->{title}, $entry->{created_at});
     }
 
-    say $table;
+    say encode_utf8($table);
 }
 
 sub show {
@@ -82,11 +85,11 @@ sub show {
     }
 
     say "ID: $entry->{id}";
-    say "Title: $entry->{title}";
-    say "Author: $entry->{author}";
+    say encode_utf8("Title: $entry->{title}");
+    say encode_utf8("Author: $entry->{author}");
     say "Created at: $entry->{created_at}";
     say "Updated at: $entry->{updated_at}";
-    say "\n$entry->{body}";
+    say encode_utf8("\n$entry->{body}");
 }
 
 sub edit {
